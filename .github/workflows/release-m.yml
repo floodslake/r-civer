@@ -4,6 +4,12 @@ on:
       version:
         required: true
         description: version
+      tcastdl:
+        required: true
+        description: tcastdl URL
+      opustags:
+        required: true
+        description: opustags URL
 
 name: release
 jobs:
@@ -13,6 +19,12 @@ jobs:
       
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - name: download
+        run: |
+         sudo md DL
+         wget ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
+         wget ${{ github.event.inputs.opustags }} -o DL/opustags.7z
         
       - name: Release
         uses: ncipollo/release-action@v1
@@ -24,4 +36,4 @@ jobs:
           draft: false
           prerelease: false
           artifacts: |
-            *.7z
+            ./DL/*.7z
