@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo mkdir -p release
           pushd release || exit 1
-          cp -r ../DL/*.7z .
+          sudo cp -r ../DL/*.7z .
           popd || exit 1
           
       - name: Release
