@@ -23,14 +23,14 @@ jobs:
       - name: download
         run: |
          sudo mkdir DL
-         sudo wget ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
-         sudo wget ${{ github.event.inputs.opustags }} -o DL/opustags.7z
+         curl -s ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
+         curl -s ${{ github.event.inputs.opustags }} -o DL/opustags.7z
       
       - name: Setup realese
         run: |
           sudo mkdir -p release
           pushd release || exit 1
-          sudo cp -r DL/*.7z .
+          sudo cp -r ../DL/*.7z .
           popd || exit 1
           
       - name: Release
