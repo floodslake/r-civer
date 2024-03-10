@@ -1,0 +1,27 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        description: version
+
+name: release
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Release
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: ${{ github.event.inputs.version }}
+          tag: ${{ github.event.inputs.version }}
+          draft: false
+          prerelease: false
+          artifacts: |
+            *.7z
