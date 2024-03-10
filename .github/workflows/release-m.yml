@@ -23,8 +23,8 @@ jobs:
       - name: download
         run: |
          sudo mkdir DL
-         curl -s ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
-         curl -s ${{ github.event.inputs.opustags }} -o DL/opustags.7z
+         sudo curl -s ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
+         sudo curl -s ${{ github.event.inputs.opustags }} -o DL/opustags.7z
       
       - name: Setup realese
         run: |
