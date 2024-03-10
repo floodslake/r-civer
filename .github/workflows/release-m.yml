@@ -22,9 +22,9 @@ jobs:
         
       - name: download
         run: |
-         sudo md DL
-         wget ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
-         wget ${{ github.event.inputs.opustags }} -o DL/opustags.7z
+         sudo mkdir DL
+         sudo wget ${{ github.event.inputs.tcastdl }} -o DL/tcastdl-main.7z
+         sudo wget ${{ github.event.inputs.opustags }} -o DL/opustags.7z
         
       - name: Release
         uses: ncipollo/release-action@v1
